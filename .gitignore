@@ -1,0 +1,14 @@
+# 忽略操作系统生成的文件
+.DS_Store
+# 忽略 Python 缓存
+__pycache__/
+*.pyc
+# 忽略大型数据文件、模型、日志和结果
+# 我们只追踪能生成这些东西的代码
+data/
+models/
+logs/
+results/
+# 忽略虚拟环境
+venv/
+.env
