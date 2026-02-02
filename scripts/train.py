@@ -40,7 +40,7 @@ try:
     df = pd.read_csv(DATA_PATH)
 
     print("步骤 2/5：划分训练集和测试集...")
-    X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'], test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(df['v2'], df['v1'], test_size=0.2, random_state=42)
 
     print("步骤 3/5: 文本特征化...")
     vectorizer = CountVectorizer()

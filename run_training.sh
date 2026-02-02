@@ -44,7 +44,7 @@ main() {
 
     echo "--> 步骤 2/3: 运行 Python 训练脚本..."
     # 核心命令！python 脚本将从环境变量 $MODEL_VERSION 中读取版本号
-    python scripts/train.py
+    python3 scripts/train.py "$MODEL_VERSION"
     
     echo ""
     echo "--> 步骤 3/3: 检查最终产出物..."
