@@ -8,7 +8,7 @@ __pycache__/
 data/
 models/
 logs/
-results/
+#results/
 # 忽略虚拟环境
 venv/
 .env

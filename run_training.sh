@@ -3,6 +3,17 @@
 # --- Shell 脚本的最佳实践 (Boilerplate) ---
 # 1. 在任何命令失败时立即退出
 set -e
+# --- 加载受保护的配置 ---
+CONFIG_FILE="configs/settings.conf"
+if [ -f "$CONFIG_FILE" ]; then
+    echo "正在从 ${CONFIG_FILE} 加载配置..."
+    # 使用 source 命令将文件中的变量导入为当前 shell 的环境变量
+    # 并使用 export 将它们传递给子进程
+    export $(grep -v '^#' $CONFIG_FILE | xargs)
+    echo "API_KEY 已加载到环境变量 (此处不显示值以保安全)。"
+else
+    echo "警告: 配置文件 ${CONFIG_FILE} 未找到。"
+fi
 # 2. 在引用未定义变量时报错
 set -u
 # 3. 管道中任何一个命令失败，都视为失败 (对 | tee 很重要)
