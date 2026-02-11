@@ -10,6 +10,15 @@ import os
 import sys
 import signal
 import time
+import numpy as np
+import random
+
+# --- 固定随机种子以保证可复现性 ---
+SEED = 42
+np.random.seed(SEED)
+random.seed(SEED)
+# 如果使用 PyTorch, 还需要 torch.manual_seed(SEED) 等
+print(f"全局随机种子已固定为: {SEED}")
 
 # --- 新增部分: 信号处理 (基于全局变量) ---
 interrupted = False
@@ -76,7 +85,7 @@ try:
     print(f"\n步骤 1/5: 加载数据从 {DATA_PATH}...")
     df = pd.read_csv(DATA_PATH)
     print("步骤 2/5: 划分训练集和测试集...")
-    X_train, X_test, y_train, y_test = train_test_split(df['v2'], df['v1'], test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(df['v2'], df['v1'], test_size=0.2, random_state=SEED)
     
     print("步骤 3/5: 文本特征化...")
     vectorizer = CountVectorizer()
