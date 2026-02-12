@@ -1,0 +1,13 @@
+# .dockerignore
+.git/
+.idea/
+__pycache__/
+*.pyc
+.DS_Store
+# 排除本地的产出物，因为容器会自己生成
+data/
+models/
+logs/
+results/
+# 排除本地的 conda 环境（如果有的话）
+spam_env/
